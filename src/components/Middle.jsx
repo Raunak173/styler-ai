@@ -2,8 +2,9 @@
 import { useState } from "react";
 import sent from "../assets/sent.png";
 import axios from "axios";
+import ItemList from "./ItemsList";
 
-const Middle = () => {
+const Middle = ({ vid, setVid }) => {
   const [input, setInput] = useState("");
   const [response, setResponse] = useState("");
 
@@ -11,15 +12,16 @@ const Middle = () => {
   The output MUST be only a comma seperated value string having most relevant tags.
   List of all fashion tags. "sweatshirt", "men", "shirt", "sweater", "hoodie", "jacket", "coat", "informal", "full-sleeve", "white", 
   "suit", "black", "cotton", "formal" "leather", "biking", "winter", "brown", "t-shirt", "half-sleeve", "red", "chequered", "blue",
-  `
+  `;
 
   const handleSubmit = async (e) => {
     try {
-      const result = await axios.post("http://localhost:5000/api/generate", { 
+      const result = await axios.post("http://localhost:5000/api/generate", {
         prompt: input + promptString,
-        maxTokens: 2048 - input.length + promptString.length -10,
+        maxTokens: 2048 - input.length + promptString.length - 10,
       });
       setResponse(result.data);
+      setInput("");
       console.log(result.data);
     } catch (error) {
       console.error(error);
@@ -35,10 +37,12 @@ const Middle = () => {
       className="flex flex-col items-center"
     >
       <p className="mt-5 font-bold text-4xl text-center">Styler.AI</p>
-      {response !== "" && <p>{response}</p>}
+      {response && (
+        <ItemList filters={response.split(",")} vid={vid} setVid={setVid} />
+      )}
       <div className="absolute bottom-10 flex items-center">
         <input
-          className="bg-['#D9D9D9] w-[400px] h-[50px]"
+          className="bg-['#D9D9D9] w-[400px] h-[50px] pl-5"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           type="text"
