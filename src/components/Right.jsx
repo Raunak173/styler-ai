@@ -7,7 +7,13 @@ const Right = ({ vid, setVid }) => {
       className="flex flex-col gap-y-5 items-center pt-1"
     >
       {/* <p className="text-center font-bold text-3xl mt-5">3D Preview</p> */}
-      <video src={vid} autoPlay muted loop />
+      {vid === null ? (
+        <div className="h-[700px] w-[350px] bg-black mt-5 justify-center items-center flex">
+          <p className="text-white text-xl">This is 3D try on</p>
+        </div>
+      ) : (
+        <video src={vid} autoPlay muted loop />
+      )}
       <button className="bg-[#EBE3BA] px-5 py-5 text-xl font-bold">
         Edit your 3D Avatar
       </button>
