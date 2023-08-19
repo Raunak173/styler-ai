@@ -8,8 +8,8 @@ const Left = () => {
       <div className="flex flex-wrap gap-x-10 gap-y-7 justify-center my-7">
         <div
           style={{
-            width: 120,
-            height: 120,
+            width: 100,
+            height: 100,
             borderRadius: "50%",
             borderWidth: 1,
             borderColor: "red",
@@ -18,8 +18,8 @@ const Left = () => {
         ></div>
         <div
           style={{
-            width: 120,
-            height: 120,
+            width: 100,
+            height: 100,
             borderRadius: "50%",
             borderWidth: 1,
             borderColor: "red",
@@ -28,8 +28,8 @@ const Left = () => {
         ></div>
         <div
           style={{
-            width: 120,
-            height: 120,
+            width: 100,
+            height: 100,
             borderRadius: "50%",
             borderWidth: 1,
             borderColor: "red",
@@ -38,8 +38,8 @@ const Left = () => {
         ></div>
         <div
           style={{
-            width: 120,
-            height: 120,
+            width: 100,
+            height: 100,
             borderRadius: "50%",
             borderWidth: 1,
             borderColor: "red",
@@ -48,8 +48,8 @@ const Left = () => {
         ></div>
         <div
           style={{
-            width: 120,
-            height: 120,
+            width: 100,
+            height: 100,
             borderRadius: "50%",
             borderWidth: 1,
             borderColor: "red",
@@ -58,8 +58,8 @@ const Left = () => {
         ></div>
         <div
           style={{
-            width: 120,
-            height: 120,
+            width: 100,
+            height: 100,
             borderRadius: "50%",
             borderWidth: 1,
             borderColor: "red",

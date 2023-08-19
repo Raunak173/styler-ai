@@ -120,14 +120,16 @@ const ItemList = ({ filters, vid, setVid }) => {
     item.tags.some((tag) => cleanedFilters.includes(tag))
   );
 
-  console.log("Filtered items:", filteredItems);
+  const displayedItems = filteredItems.slice(0, 2); // Display at most 2 items
+
+  console.log("Filtered items:", displayedItems);
 
   return (
     <div className="item-list flex flex-col gap-y-4 mt-10">
-      {filteredItems.length === 0 ? (
+      {displayedItems.length === 0 ? (
         <p>No items match the selected filters.</p>
       ) : (
-        filteredItems.map((item) => (
+        displayedItems.map((item) => (
           <div
             className="item border bg-[#E1FFFF] flex justify-between"
             key={item?.name}
@@ -135,7 +137,7 @@ const ItemList = ({ filters, vid, setVid }) => {
           >
             <div className="flex flex-col justify-center items-center pl-10 gap-y-3">
               <h2 className="font-bold text-xl">
-                Check this out : {item?.name}
+                Check this out: {item?.name}
               </h2>
               <button className="bg-[#EBE3BA] px-5 py-5 text-xl font-bold">
                 <a
@@ -147,7 +149,7 @@ const ItemList = ({ filters, vid, setVid }) => {
                 </a>
               </button>
             </div>
-            <button className=" w-[150px]" onClick={() => setVid(item?.video)}>
+            <button className="w-[150px]" onClick={() => setVid(item?.video)}>
               <video src={item?.video} muted />
             </button>
           </div>
