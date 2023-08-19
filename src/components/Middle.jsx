@@ -1,18 +1,34 @@
-import React, { useState } from "react";
+/* eslint-disable no-unused-vars */
+import { useState } from "react";
 import sent from "../assets/sent.png";
+import axios from "axios";
 
 const Middle = () => {
   const [input, setInput] = useState("");
   const [response, setResponse] = useState("");
+
+  const promptString = `You are a fashion recommender. Based on this message by user, find out the most relevant tag out of the options below. 
+  The output MUST be only a comma seperated value string having most relevant tags.
+  List of all fashion tags. "sweatshirt", "men", "shirt", "sweater", "hoodie", "jacket", "coat", "informal", "full-sleeve", "white", 
+  "suit", "black", "cotton", "formal" "leather", "biking", "winter", "brown", "t-shirt", "half-sleeve", "red", "chequered", "blue",
+  `
+
   const handleSubmit = async (e) => {
     try {
-      const result = await axios.post("/chatgpt", { prompt: input });
-      setResponse(result.data.text);
+      const result = await axios.post("http://localhost:5000/api/generate", { 
+        prompt: input + promptString,
+        maxTokens: 2048 - input.length + promptString.length -10,
+      });
+      setResponse(result.data);
+      console.log(result.data);
     } catch (error) {
       console.error(error);
       setResponse("An error occurred while processing your request.");
+      // set a fallback response, in case of error
+      // set some default clothing tags
     }
   };
+
   return (
     <div
       style={{ backgroundColor: "#A8A8A8", minHeight: "100vh", width: "40%" }}
