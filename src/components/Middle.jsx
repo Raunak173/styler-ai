@@ -16,7 +16,7 @@ const Middle = ({ vid, setVid }) => {
 
   const handleSubmit = async (e) => {
     try {
-      const result = await axios.post("http://localhost:5000/api/generate", {
+      const result = await axios.post("https://extinct-pear-threads.cyclic.cloud/api/generate", {
         prompt: input + promptString,
         maxTokens: 2048 - input.length + promptString.length - 10,
       });
